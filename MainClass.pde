@@ -4,18 +4,20 @@
 */
 cell mc ;
 BeamCells beam_cells ;
-int mc_area ;
-int bc_area ;
+int mc_area , mc_color ;
+int bc_area , bc_color ;
 
 void setup()
 {
   size(640 , 320);
   mc_area = 32 ;
+  mc_color = 150 ;
   bc_area = 16 ;
+  bc_color = 50 ;
   
   mc = new cell(new PVector(width / 2 , height / 2) ,
                 new PVector(0.75 , 0.75) , 
-                mc_area , 150) ;
+                mc_area , mc_color) ;
   beam_cells = new BeamCells(bc_area) ;
 }
 
@@ -39,5 +41,5 @@ void mousePressed() {
   PVector bc_loc_tmp = PVector.mult(bc_vel , mc_area/2);
   PVector bc_loc = PVector.add(mc.location , bc_loc_tmp);
   
-  beam_cells.addCell(bc_loc , bc_vel , bc_area , 50) ;
+  beam_cells.addCell(bc_loc , bc_vel , bc_area , bc_color) ;
 }
